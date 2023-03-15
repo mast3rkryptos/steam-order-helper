@@ -39,7 +39,7 @@ class GameEntity:
         return [self.name, self.igdbId, self.igdbParentGame, self.igdbRating, self.igdbWeightedRating, self.hltb]
 
     def __str__(self):
-        return f'{self.name}(steam{self.steamId}/igdb{self.igdbId}) :: {self.igdbParentGame} :: {self.igdbRating} :: {self.igdbWeightedRating} :: {self.hltb}'
+        return f'{self.name} (steam{self.steamId}/igdb{self.igdbId}) :: {self.igdbParentGame} :: {self.igdbRating} :: {self.igdbWeightedRating} :: {self.hltb}'
 
 
 def initializeWrapper(client_id, client_secret):
@@ -89,23 +89,26 @@ for game in steam.users.get_owned_games("76561197990222251")["games"]:
     gameEntities.append(GameEntity(game['name'], game['appid']))
     steamIdList.append(f'\"{game["appid"]}\"')
 
+# TODO Update override to use IGDB IDs instead of names, incorporate the HLTB = n/f in the CSV
 # Match Steam IDs to IGDB IDs
 overrideList = {}
 with open("override.csv", "r", encoding='utf-8') as f:
     for line in f:
         splitline = line.split(",")
         overrideList[splitline[0]] = splitline[1].rstrip()
-results = executeIgdbQuery('external_games', f'fields game, uid; limit 500; where uid=({",".join(steamIdList)}) & category=1;')
+results = executeIgdbQuery('external_games', f'fields game, name, uid; limit 500; where uid=({",".join(steamIdList)}) & category=1;')
 for ge in gameEntities:
     foundIt = False
     for result in results:
         if not foundIt and result["uid"] == str(ge.steamId):
+            ge.name = result["name"]
             ge.igdbId = result["game"]
             foundIt = True
             break
     if not foundIt:
         nameResult = executeIgdbQuery('games', f'fields id, name; limit 500; where name=\"{ge.name if ge.name not in overrideList.keys() else overrideList[ge.name]}\";')
         if len(nameResult) > 0:
+            ge.name = nameResult[0]["name"]
             ge.igdbId = nameResult[0]["id"]
         else:
             print(f"ERROR: Could not cross-reference Steam ID or name for: {ge.name}")
@@ -120,7 +123,7 @@ with open("supplemental.csv", "r") as f:
     queryableSGString = ",".join([sg for sg in supplementalGames])
     results = executeIgdbQuery('games', f'fields id, name; limit 500; where id=({",".join([sg for sg in supplementalGames])}); sort name asc;')
     for game in results:
-        gameEntities.append(GameEntity(game["name"], 0))
+        gameEntities.append(GameEntity(game["name"], -1))
         gameEntities[-1].igdbId = game["id"]
 
 # Now that we have a good list of IGDB IDs, divide based on category
@@ -146,7 +149,7 @@ for gameEntity in gameEntities:
                 gameEntity.igdbRating = float("{rating:.2f}".format(rating=igi["aggregated_rating"]))
                 gameEntity.igdbWeightedRating = float("{rating:.2f}".format(rating=igi["aggregated_rating"] * igi["aggregated_rating_count"]))
 
-# TODO Print to log; add category to query and GemeEntity
+# TODO Print to log; add category to query and GameEntity
 # Lookup HLTB statistics
 statusIndicatorWrap = 100
 count = 0
