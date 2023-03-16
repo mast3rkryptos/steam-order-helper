@@ -30,16 +30,17 @@ class GameEntity:
         self.name = name
         self.steamId = steamId
         self.igdbId = -1
-        self.igdbParentGame = -1
+        self.igdbParentGame = None
         self.igdbRating = -1
         self.igdbWeightedRating = -1
         self.hltb = -1
 
     def getCsvList(self):
-        return [self.name, self.igdbId, self.igdbParentGame, self.igdbRating, self.igdbWeightedRating, self.hltb]
+        return [self.name, self.igdbId, f'{self.igdbParentGame["name"]} (igdb{self.igdbParentGame["id"]})' if self.igdbParentGame is not None else None, self.igdbRating, self.igdbWeightedRating, self.hltb]
 
     def __str__(self):
-        return f'{self.name} (steam{self.steamId}/igdb{self.igdbId}) :: {self.igdbParentGame} :: {self.igdbRating} :: {self.igdbWeightedRating} :: {self.hltb}'
+        igdbParentGameStr = f'{self.igdbParentGame["name"]} (igdb{self.igdbParentGame["id"]})' if self.igdbParentGame is not None else None
+        return f'{self.name} (steam{self.steamId}/igdb{self.igdbId}) :: {igdbParentGameStr} :: {self.igdbRating} :: {self.igdbWeightedRating} :: {self.hltb}'
 
 
 def initializeWrapper(client_id, client_secret):
@@ -60,13 +61,9 @@ def executeIgdbQuery(endpoint, query):
     igdbExtGamesResultsData = json.loads(igdbResultsJson)
     return igdbExtGamesResultsData
 
-def getIgdbGameIds(gameEntities):
-    limit = 500
-    return executeIgdbQuery('external_games', f'fields game,uid; limit {limit}; where uid = ({",".join([x.steamId for x in gameEntities])}) & category = 1; sort uid asc;')
-
 def getIgdbGameInfo(gameEntities):
     limit = 500
-    return executeIgdbQuery('games', f'fields name,rating,rating_count,aggregated_rating,aggregated_rating_count,parent_game,category; limit {limit}; where id = ({",".join([str(x.igdbId) for x in gameEntities])}); sort id asc;')
+    return executeIgdbQuery('games', f'fields name,rating,rating_count,aggregated_rating,aggregated_rating_count,parent_game.name,category; limit {limit}; where id = ({",".join([str(x.igdbId) for x in gameEntities])}); sort id asc;')
 
 
 # Main Script
@@ -106,7 +103,7 @@ for ge in gameEntities:
             foundIt = True
             break
     if not foundIt:
-        nameResult = executeIgdbQuery('games', f'fields id, name; limit 500; where name=\"{ge.name if ge.name not in overrideList.keys() else overrideList[ge.name]}\";')
+        nameResult = executeIgdbQuery('games', f'fields name; limit 500; where name=\"{ge.name if ge.name not in overrideList.keys() else overrideList[ge.name]}\";')
         if len(nameResult) > 0:
             ge.name = nameResult[0]["name"]
             ge.igdbId = nameResult[0]["id"]
@@ -121,7 +118,7 @@ with open("supplemental.csv", "r") as f:
         splitline = line.split(",")
         supplementalGames.append(splitline[1])
     queryableSGString = ",".join([sg for sg in supplementalGames])
-    results = executeIgdbQuery('games', f'fields id, name; limit 500; where id=({",".join([sg for sg in supplementalGames])}); sort name asc;')
+    results = executeIgdbQuery('games', f'fields name; limit 500; where id=({",".join([sg for sg in supplementalGames])}); sort name asc;')
     for game in results:
         gameEntities.append(GameEntity(game["name"], -1))
         gameEntities[-1].igdbId = game["id"]
@@ -157,12 +154,10 @@ for ge in gameEntities:
     best_element = lookupHltb(ge.name)
     if best_element is not None:
         ge.hltb = best_element.completionist
-    elif ge.igdbParentGame != -1:
+    elif ge.igdbParentGame != None:
         # Attempt to retry using parent_game
-        print(f"Retrying {ge.name} with parent game ID {ge.igdbParentGame}")
-        results = executeIgdbQuery('games', f'fields name; limit 500; where id={ge.igdbParentGame};')
-        print(f"Matched {ge.name} to parent game {results[0]['name']}")
-        best_element = lookupHltb(results[0]["name"])
+        print(f"INFO: Retrying HLTB lookup for \"{ge.name}\" with parent game \"{ge.igdbParentGame['name']}\"")
+        best_element = lookupHltb(ge.igdbParentGame['name'])
         ge.hltb = best_element.completionist if best_element is not None else "n/f"
     else:
         ge.hltb = "n/f"
