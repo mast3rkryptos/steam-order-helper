@@ -48,11 +48,14 @@ def initializeWrapper(client_id, client_secret):
     access_token = json.loads(r._content)['access_token']
     return IGDBWrapper(client_id, access_token)
 
-def lookupHltb(name):
+def lookupHltb(input):
     best_element = None
-    results = HowLongToBeat().search(re.sub(r'[^ -~]', "", name.strip()))
-    if results is not None and len(results) > 0:
-        best_element = max(results, key=lambda element: element.similarity)
+    if input.isdigit():
+        best_element = HowLongToBeat().search_from_id(int(input))
+    else:
+        results = HowLongToBeat().search(re.sub(r'[^ -~]', "", input.strip()), similarity_case_sensitive=False)
+        if results is not None and len(results) > 0:
+            best_element = max(results, key=lambda element: element.similarity)
     return best_element
 
 def executeIgdbQuery(endpoint, query):
@@ -86,7 +89,6 @@ for game in steam.users.get_owned_games("76561197990222251")["games"]:
     gameEntities.append(GameEntity(game['name'], game['appid']))
     steamIdList.append(f'\"{game["appid"]}\"')
 
-# TODO Update override to use IGDB IDs instead of names, incorporate the HLTB = n/f in the CSV
 # Match Steam IDs to IGDB IDs
 overrideList = {}
 with open("override.csv", "r", encoding='utf-8') as f:
@@ -148,10 +150,15 @@ for gameEntity in gameEntities:
 
 # TODO Print to log; add category to query and GameEntity
 # Lookup HLTB statistics
+hltbOverrideList = {} # Needed for games that can't be found in HLTB by their IGDB name, or their parent_game name
+with open("hltb_override.csv", "r", encoding='utf-8') as f:
+    for line in f:
+        splitline = line.rsplit(",", 1)
+        hltbOverrideList[splitline[0]] = splitline[1].rstrip()
 statusIndicatorWrap = 100
 count = 0
 for ge in gameEntities:
-    best_element = lookupHltb(ge.name)
+    best_element = lookupHltb(ge.name if ge.name not in hltbOverrideList.keys() else hltbOverrideList[ge.name])
     if best_element is not None:
         ge.hltb = best_element.completionist
     elif ge.igdbParentGame != None:
