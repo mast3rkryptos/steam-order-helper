@@ -1,6 +1,6 @@
 from howlongtobeatpy import HowLongToBeat
 from igdb.wrapper import IGDBWrapper
-from steam import Steam
+from steam_web_api import Steam
 from decouple import Config, RepositoryEnv
 
 import csv
