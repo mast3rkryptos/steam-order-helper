@@ -4,7 +4,34 @@ from datetime import datetime
 
 import csv
 import logging
+import math
+import requests
 import time
+
+def favorability(appid):
+    url = f"https://store.steampowered.com/appreviews/{appid}?json=1&language=all&review_type=all&purchase_type=all"
+    r = requests.get(url, timeout=10).json()
+    qs = r.get("query_summary", {})
+    pos = qs.get("total_positive", 0)
+    neg = qs.get("total_negative", 0)
+    total = pos + neg
+    return pos/total if total>0 else None
+
+def get_app_reviews(appid):
+    url = f"https://store.steampowered.com/appreviews/{appid}?json=1&language=all&review_type=all&purchase_type=all"
+    r = requests.get(url, timeout=10).json()
+    qs = r.get("query_summary", {})
+    pos = qs.get("total_positive", 0)
+    n = qs.get("total_reviews", 0)
+    return pos, n
+
+def wilson_lower(pos, n, z=1.96):
+    if n == 0: return 0
+    p = pos / n
+    z2 = z*z
+    denom = 1 + z2/n
+    num = p + z2/(2*n) - z * math.sqrt((p*(1-p) + z2/(4*n)) / n)
+    return num / denom
 
 # Main Script
 if __name__=="__main__":
@@ -41,6 +68,15 @@ if __name__=="__main__":
         except Exception as e:
             print('An exception occurred: ', e)
             games[-1].append(-1)
+        # app_details = steam.apps.get_app_details(game['appid'], filters='metacritic')
+        # if app_details is not None and ('data' in app_details[str(game['appid'])] and len(app_details[str(game['appid'])]['data']) > 0):
+        #     games[-1].append(app_details[str(game['appid'])]['data']['metacritic']['score'])
+        # elif app_details is not None:
+        #     games[-1].append(-1)
+        # else:
+        #     games[-1].append(-2)
+        pos, n = get_app_reviews(game['appid'])
+        games[-1].append(wilson_lower(pos, n))
         print(games[-1])
     logger.info(f'Steam Game Count: {len(games)}')
 
