@@ -6,6 +6,7 @@ import time
 
 from datetime import datetime
 from decouple import Config, RepositoryEnv
+from howlongtobeatpy import HowLongToBeat
 from steam_web_api import Steam
 
 FORCE_DATA_UPDATE = False
@@ -24,7 +25,7 @@ def get_app_reviews(appid):
     return pos, n
 
 def get_hltb_time(hltb_id):
-    return 1
+    return HowLongToBeat().search_from_id(int(hltb_id))
 
 WIKIDATA_SPARQL_URL = "https://query.wikidata.org/sparql"
 HEADERS = {"User-Agent": "steam-order-helper-v2/1.0 (example@example.com)"}
@@ -154,11 +155,13 @@ if __name__=="__main__":
         games[-1]['personal_interest'] = 1
 
         # Retrieve HLTB "Main + Extras", calculate completion percentage
+        print(get_hltb_time(7231))
         if games[-1]['hltb_id'] is not None:
             if str(games[-1]['appid']) in cache.keys() and not FORCE_DATA_UPDATE:
                 games[-1]['completion'] = float(cache[str(games[-1]['appid'])]['completion'])
             else:
                 hltb_time = get_hltb_time(games[-1]['hltb_id'])
+                #hltb_time = get_hltb_time(7231)
                 games[-1]['playtime'] / hltb_time
         else:
             print('Missing HLTB ID')
