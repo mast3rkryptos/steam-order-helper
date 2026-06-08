@@ -1,0 +1,6 @@
+appid,name,playtime,opencritic_id,hltb_id,favorability,critic_score,protonDB_rating,personal_interest,completion,favorability_weighted,critic_score_weighted,protonDB_rating_weighted,personal_interest_weighted,completion_weighted,final_score
+70,Half-Life,38,,,0.9641817399515453,1,1.0,1,0,0.40977723947940675,0.325,-1,0.15,0.0,0.8847772394794068
+220,Half-Life 2,214,,,0.9754960772370436,1,1.0,1,0,0.4145858328257435,0.325,-1,0.15,0.0,0.8895858328257435
+320,Half-Life 2: Deathmatch,0,,,0.9031085572758903,1,1.0,1,0,0.3838211368422534,0.325,-1,0.15,0.0,0.8588211368422535
+360,Half-Life Deathmatch: Source,0,,,0.743639707274973,1,1.0,1,0,0.3160468755918635,0.325,-1,0.15,0.0,0.7910468755918635
+400,Portal,202,,,0.9846960478509369,1,1.0,1,0,0.41849582033664817,0.325,-1,0.15,0.0,0.8934958203366482
