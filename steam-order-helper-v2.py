@@ -10,12 +10,14 @@ from howlongtobeatpy import HowLongToBeat
 from steam_web_api import Steam
 
 FORCE_DATA_UPDATE = False
+LIMIT = 500
 PROTON_HARD_COMPATIBILITY = True
 
 # Snipped from 'ProtonDB-to-Steam-Library' GitHub
 class ProtonDBError(Exception):
     pass
 
+# Source: GPT-5 mini
 def get_app_reviews(appid):
     url = f"https://store.steampowered.com/appreviews/{appid}?json=1&language=all&review_type=all&purchase_type=all"
     r = requests.get(url, timeout=10).json()
@@ -24,41 +26,45 @@ def get_app_reviews(appid):
     n = qs.get("total_reviews", 0)
     return pos, n
 
-def get_hltb_time(hltb_id):
-    return HowLongToBeat().search_from_id(int(hltb_id))
+def get_hltb_stats(hltb_id):
+    result = HowLongToBeat().search_from_id(int(hltb_id))
+    if result == None:
+        print(f'HLTB ID {hltb_id} result is NoneType')
+        return 999999
+    else:
+        return result.main_extra
 
+# Source: GPT-5 mini, modified
 WIKIDATA_SPARQL_URL = "https://query.wikidata.org/sparql"
 HEADERS = {"User-Agent": "steam-order-helper-v2/1.0 (example@example.com)"}
-def get_ids_from_steam_appid(appid: str):
-    """
-    Given a Steam AppID (string or int), return a dict:
-      {
-        "wikidata_qid": "QXXXX" or None,
-        "opencritic_id": "1234" or None,   # P6276
-        "hltb_id": "5678" or None          # P4605
-      }
-    """
-    appid = str(appid)
+def get_wikidata_properties_from_steam_appids(appids):
+    qids = {}
+    hltb_ids = {}
+    appids_formatted = f"{' '.join(['"' + str(a) + '"' for a in appids])}"
+    #print(appids_formatted)
     sparql = f"""
-    SELECT ?item ?opencritic ?hltb WHERE {{
-      ?item wdt:P1733 "{appid}".
-      OPTIONAL {{ ?item wdt:P6276 ?opencritic. }}
-      OPTIONAL {{ ?item wdt:P4605 ?hltb. }}
+    SELECT ?item ?qid ?appid ?hltb WHERE {{
+      VALUES ?appid {{ {appids_formatted} }}
+      ?item wdt:P1733 ?appid .
+      OPTIONAL {{ ?item wdt:P1733 ?appid. }}
+      OPTIONAL {{ ?item wdt:P2816 ?hltb. }}
     }}
-    LIMIT 1
+    ORDER BY xsd:integer(?appid)
     """
+    #print(sparql)
     resp = requests.get(WIKIDATA_SPARQL_URL, params={"format": "json", "query": sparql}, headers=HEADERS, timeout=20)
     resp.raise_for_status()
     data = resp.json()
+    #print(data)
     bindings = data.get("results", {}).get("bindings", [])
     if not bindings:
-        return {"wikidata_qid": None, "opencritic_id": None, "hltb_id": None}
-    b = bindings[0]
-    item_url = b.get("item", {}).get("value")
-    qid = item_url.rsplit("/", 1)[-1] if item_url else None
-    opencritic = b.get("opencritic", {}).get("value")
-    hltb = b.get("hltb", {}).get("value")
-    return {"wikidata_qid": qid, "opencritic_id": opencritic, "hltb_id": hltb}
+        return None
+    for b in bindings:
+        appid = b.get("appid", {}).get("value")
+        item_url = b.get("item", {}).get("value")
+        qids[appid] = item_url.rsplit("/", 1)[-1] if item_url else None
+        hltb_ids[appid] = b.get("hltb", {}).get("value")
+    return qids, hltb_ids
 
 # Snipped from 'ProtonDB-to-Steam-Library' GitHub
 def get_protondb_rating(app_id):
@@ -69,6 +75,7 @@ def get_protondb_rating(app_id):
     # use trendingTier as this reflects a more up-to-date rating rather than an all-time rating
     return protondb_api_json["trendingTier"]
 
+# Source: GPT-5 mini
 def wilson_lower(pos, n, z=1.96):
     if n == 0: return 0
     p = pos / n
@@ -78,6 +85,8 @@ def wilson_lower(pos, n, z=1.96):
     return num / denom
 
 # Main Script
+# TODO Add Wikidata QID indexing and overrides
+# TODO Add in emulator games capability
 if __name__=="__main__":
 
     games = []
@@ -111,34 +120,35 @@ if __name__=="__main__":
             cache[row['appid']] = row
 
     # Retrieve user's owned games
-    limit = 5
+    owned_games = steam.users.get_owned_games(steamid)['games']
+
+    # Retrieve the Wikidata properties in a reduced set of queries
+    qids, hltb_ids = get_wikidata_properties_from_steam_appids([game['appid'] for game in owned_games])
+
     count = 0
-    for game in steam.users.get_owned_games(steamid)['games']:
+    for game in owned_games:
         # Debug break for faster testing
-        if count >= limit:
+        if count >= LIMIT:
             break
 
         games.append({})
 
         # Add basic info from Steam to master list
+        games[-1]['qid'] = qids[str(game['appid'])] if str(game['appid']) in qids.keys() else None
         games[-1]['appid'] = game['appid']
         games[-1]['name'] = game['name']
-        games[-1]['playtime'] = game['playtime_forever']
-
-        # Lookup centralized, critic, and HLTB IDs
-        ids = get_ids_from_steam_appid(games[-1]['appid'])
-        games[-1]['opencritic_id'] = ids['opencritic_id']
-        games[-1]['hltb_id'] = ids['hltb_id']
+        playtime = game['playtime_forever']
 
         # Retrieve favorability (already normalized) and apply Wilson score interval
         if str(games[-1]['appid']) in cache.keys() and not FORCE_DATA_UPDATE:
             games[-1]['favorability'] = float(cache[str(games[-1]['appid'])]['favorability'])
         else:
             pos, n = get_app_reviews(games[-1]['appid'])
-            games[-1]['favorability'].append(wilson_lower(pos, n))
+            games[-1]['favorability'] = wilson_lower(pos, n)
 
         # Retrieve critic scores and normalize
         games[-1]['critic_score'] = 1
+        # TODO Add  Metacritic scraper
 
         # Retrieve ProtonDB ratings and normalize
         if str(games[-1]['appid']) in cache.keys() and not FORCE_DATA_UPDATE:
@@ -146,26 +156,29 @@ if __name__=="__main__":
         else:
             try:
                 rating = get_protondb_rating(games[-1]['appid'])
-                games[-1]['protonDB_rating'].append(1 if rating == 'platinum' else 0.9 if rating == 'gold' else 0.75 if rating == 'silver' else 0.5 if rating == 'bronze' else 0)
+                games[-1]['protonDB_rating'] = 1 if rating == 'platinum' else 0.9 if rating == 'gold' else 0.75 if rating == 'silver' else 0.5 if rating == 'bronze' else 0
             except ProtonDBError:
-                print(game['name'], 'not found in ProtonDB')
-                games[-1]['protonDB_rating'].append(0)
+                print(games[-1]['name'], 'not found in ProtonDB')
+                games[-1]['protonDB_rating'] = 0
 
         # Retrieve "Personal Interest", filter out Completed, Not Interested, and Ignore
+        # TODO
         games[-1]['personal_interest'] = 1
 
         # Retrieve HLTB "Main + Extras", calculate completion percentage
-        print(get_hltb_time(7231))
-        if games[-1]['hltb_id'] is not None:
-            if str(games[-1]['appid']) in cache.keys() and not FORCE_DATA_UPDATE:
-                games[-1]['completion'] = float(cache[str(games[-1]['appid'])]['completion'])
-            else:
-                hltb_time = get_hltb_time(games[-1]['hltb_id'])
-                #hltb_time = get_hltb_time(7231)
-                games[-1]['playtime'] / hltb_time
+        # TODO Solve missing and NoneType HLTB IDs, and NoneType results
+        if str(games[-1]['appid']) in cache.keys() and not FORCE_DATA_UPDATE:
+            games[-1]['completion'] = float(cache[str(games[-1]['appid'])]['completion'])
         else:
-            print('Missing HLTB ID')
-            games[-1]['completion'] = 0
+            if str(games[-1]['appid']) in hltb_ids.keys() and hltb_ids[str(games[-1]['appid'])] is not None:
+                hltb_main_extra = get_hltb_stats(hltb_ids[str(games[-1]['appid'])])
+                games[-1]['completion'] = min(1, ((playtime / 60) / hltb_main_extra) if hltb_main_extra != 0 else 0)
+            elif str(games[-1]['appid']) in hltb_ids.keys():
+                print('NoneType HLTB ID')
+                games[-1]['completion'] = 0
+            else:
+                print('Missing HLTB ID')
+                games[-1]['completion'] = 0
 
         # Combine weightings with previous data into weighted values
         if PROTON_HARD_COMPATIBILITY:
@@ -192,7 +205,7 @@ if __name__=="__main__":
             time.sleep(1)
 
         # Debug print to see master games list
-        print(games[-1])
+        print(len(games), games[-1])
 
         # Debug counter for faster testing
         count += 1
