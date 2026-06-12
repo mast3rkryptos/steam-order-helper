@@ -153,7 +153,7 @@ def get_protondb_rating(app_id):
 
 # Source: GPT-5 mini, modified
 WIKIDATA_SPARQL_URL = "https://query.wikidata.org/sparql"
-HEADERS = {"User-Agent": "steam-order-helper-v2/1.0 (example@example.com) Accept: application/sparql-results+json, application/json"}
+HEADERS = {"User-Agent": "steam-order-helper-v2/1.0 (example@example.com)"}
 def get_wikidata_properties_from_qids(qids):
     labels = {}
     hltb_ids = {}
