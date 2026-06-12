@@ -18,10 +18,15 @@ class GameSelection(Enum):
     STEAM_ONLY = 2
     OTHERS_ONLY = 3
 
+class ProtonCompatibilityMode(Enum):
+    NONE = 1
+    SOFT = 2
+    HARD = 3
+
 GAME_SELECTION = GameSelection.ALL
 FORCE_DATA_UPDATE = False
 LIMIT = 550
-PROTON_HARD_COMPATIBILITY = True
+PROTON_COMPATIBILITY = ProtonCompatibilityMode.HARD
 UNIQUE_LOGS = False
 
 # Setup logger (global)
@@ -148,7 +153,7 @@ def get_protondb_rating(app_id):
 
 # Source: GPT-5 mini, modified
 WIKIDATA_SPARQL_URL = "https://query.wikidata.org/sparql"
-HEADERS = {"User-Agent": "steam-order-helper-v2/1.0 (example@example.com)"}
+HEADERS = {"User-Agent": "steam-order-helper-v2/1.0 (example@example.com) Accept: application/sparql-results+json, application/json"}
 def get_wikidata_properties_from_qids(qids):
     labels = {}
     hltb_ids = {}
@@ -242,7 +247,7 @@ if __name__=="__main__":
     logger.info(f'Script started')
     logger.info(f'\tGame Selection: {GAME_SELECTION.name}')
     logger.info(f'\tForce Data Update: {FORCE_DATA_UPDATE}')
-    logger.info(f'\tProton Hard Compatibility: {PROTON_HARD_COMPATIBILITY}')
+    logger.info(f'\tProton Compatibility: {PROTON_COMPATIBILITY.name}')
 
     # Setup configuration file
     DOTENV_FILE = '.env'
@@ -255,6 +260,14 @@ if __name__=="__main__":
         for row in reader:
             if row['qid'] not in cache.keys():
                 cache[row['qid']] = row
+
+    # Open up manual_fields.csv
+    manual_fields = {}
+    with open('input/manual_fields.csv', 'r', newline='') as csvfile:
+        reader = csv.DictReader(csvfile)
+        for row in reader:
+            if row['qid'] not in manual_fields.keys():
+                manual_fields[row['qid']] = row
 
     # Initialize some shared dictionaries
     game_list = []
@@ -408,9 +421,12 @@ if __name__=="__main__":
         else:
             games[-1]['protonDB_rating'] = 'n/a'
 
-        # Retrieve "Personal Interest", filter out Completed, Not Interested, and Ignore
-        # TODO
-        games[-1]['personal_interest'] = 1
+        # Retrieve "Personal Interest"
+        if games[-1]['qid'] in manual_fields.keys():
+            games[-1]['personal_interest'] = int(manual_fields[games[-1]['qid']]['personal_interest'])
+        else:
+            logger.warning(f'QID {games[-1]['qid']} not found in manual_fields.csv')
+            games[-1]['personal_interest'] = 0
 
         # Retrieve HLTB "Main + Extras", calculate completion percentage
         if games[-1]['qid'] in cache.keys() and not FORCE_DATA_UPDATE:
@@ -432,10 +448,10 @@ if __name__=="__main__":
 
         # Combine weightings with previous data into weighted values
         if 'appid' in game.keys():
-            if PROTON_HARD_COMPATIBILITY:
+            if PROTON_COMPATIBILITY == ProtonCompatibilityMode.NONE or PROTON_COMPATIBILITY == ProtonCompatibilityMode.HARD:
                 games[-1]['favorability_weighted'] = games[-1]['favorability'] * 0.40           # Favorability
                 games[-1]['critic_score_weighted'] = games[-1]['critic_score'] * 0.27           # Critic Scores
-                games[-1]['protonDB_rating_weighted'] = 'n/a'                                   # ProtonDB Rating = -1 (weighted value not used)
+                games[-1]['protonDB_rating_weighted'] = 'n/a'                                   # ProtonDB Rating (weighted value not used)
                 games[-1]['personal_interest_weighted'] = games[-1]['personal_interest'] * 0.20 # Personal Interest
                 games[-1]['completion_weighted'] = games[-1]['completion'] * 0.13               # Completion
             else:
@@ -447,18 +463,26 @@ if __name__=="__main__":
         else:
             games[-1]['favorability_weighted'] = 'n/a'                                      # Favorability
             games[-1]['critic_score_weighted'] = games[-1]['critic_score'] * 0.57           # Critic Scores
-            games[-1]['protonDB_rating_weighted'] = 'n/a'                                   # ProtonDB Rating = -1 (weighted value not used)
+            games[-1]['protonDB_rating_weighted'] = 'n/a'                                   # ProtonDB Rating (weighted value not used)
             games[-1]['personal_interest_weighted'] = games[-1]['personal_interest'] * 0.43 # Personal Interest
             games[-1]['completion_weighted'] = 'n/a'                                        # Completion
 
         # Combine weighted values into final score
-        if 'appid' in game.keys():
-            if PROTON_HARD_COMPATIBILITY:
-                games[-1]['final_score'] = games[-1]['protonDB_rating'] * (games[-1]['favorability_weighted'] + games[-1]['critic_score_weighted'] + games[-1]['personal_interest_weighted'] + games[-1]['completion_weighted'])
-            else:
-                games[-1]['final_score'] = games[-1]['favorability_weighted'] + games[-1]['critic_score_weighted'] + games[-1]['protonDB_rating_weighted'] + games[-1]['personal_interest_weighted'] + games[-1]['completion_weighted']
+
+        # Filter out Completed and Ignore games (Pass #2 with overridden QIDs)
+        if games[-1]['qid'] in manual_fields.keys() and (int(manual_fields[games[-1]['qid']]['completed']) == 1 or int(manual_fields[games[-1]['qid']]['ignore']) == 1):
+            logger.debug(f'Zeroing \'final_score\' for QID {games[-1]['qid']}, Reason: Marked as Completed or Ignore')
+            games[-1]['final_score'] = 0
         else:
-            games[-1]['final_score'] = games[-1]['critic_score_weighted'] + games[-1]['personal_interest_weighted']
+            if 'appid' in game.keys():
+                if PROTON_COMPATIBILITY == ProtonCompatibilityMode.HARD:
+                    games[-1]['final_score'] = games[-1]['protonDB_rating'] * (games[-1]['favorability_weighted'] + games[-1]['critic_score_weighted'] + games[-1]['personal_interest_weighted'] + games[-1]['completion_weighted'])
+                elif PROTON_COMPATIBILITY == ProtonCompatibilityMode.SOFT:
+                    games[-1]['final_score'] = games[-1]['favorability_weighted'] + games[-1]['critic_score_weighted'] + games[-1]['protonDB_rating_weighted'] + games[-1]['personal_interest_weighted'] + games[-1]['completion_weighted']
+                else:
+                    games[-1]['final_score'] = games[-1]['favorability_weighted'] + games[-1]['critic_score_weighted'] + games[-1]['personal_interest_weighted'] + games[-1]['completion_weighted']
+            else:
+                games[-1]['final_score'] = games[-1]['critic_score_weighted'] + games[-1]['personal_interest_weighted']
 
         # Sleep 1s to prevent rate-limiting
         if games[-1]['qid'] not in cache.keys() or FORCE_DATA_UPDATE:

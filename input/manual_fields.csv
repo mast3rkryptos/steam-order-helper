@@ -1,10 +1,10 @@
 qid,name,personal_interest,completed,ignore
-Q168615,1080° Snowboarding,0,0,0
+Q168615,1080° Snowboarding,0,0,1
 Q56120553,7 Billion Humans,0,0,0
-Q14753828,7 Days to Die,0,0,0
+Q14753828,7 Days to Die,0,0,1
 Q20899382,ABZÛ,0,0,0
-Q109274215,Aeon's End,0,0,0
-Q4697670,AirMech,0,0,0
+Q109274215,Aeon's End,0,0,1
+Q4697670,AirMech,0,0,1
 Q104529092,Alba: A Wildlife Adventure,0,0,0
 Q22986,Amnesia: The Dark Descent,0,0,0
 Q489583,And Yet It Moves,0,0,0
@@ -14,7 +14,7 @@ Q4769943,Anomaly Korea,0,0,0
 Q2067185,Anomaly Warzone Earth,0,0,0
 Q4774596,Antichamber,0,0,0
 Q20031747,ARK: Survival Evolved,0,1,0
-Q120717463,ARK: Survival Of The Fittest,0,0,0
+Q120717463,ARK: Survival Of The Fittest,0,0,1
 Q16927602,Armello,0,0,0
 Q200864,Assassin's Creed,0,1,0
 Q677351,Assassin's Creed Brotherhood,0,0,0
@@ -23,20 +23,20 @@ Q739654,Assassin's Creed Revelations,0,0,0
 Q40166,Assassin's Creed® III,0,0,0
 Q86994484,Astrox Imperium,1,0,0
 Q758900,Audiosurf,0,0,0
-Q613511,Back to the Future: Ep 1 - It's About Time,0,0,0
-Q4034780,Back to the Future: Ep 2 - Get Tannen!,0,0,0
-Q4034779,Back to the Future: Ep 3 - Citizen Brown,0,0,0
-Q4034782,Back to the Future: Ep 4 - Double Visions,0,0,0
-Q4034783,Back to the Future: Ep 5 - OUTATIME,0,0,0
+Q613511,Back to the Future: Ep 1 - It's About Time,0,0,1
+Q4034780,Back to the Future: Ep 2 - Get Tannen!,0,0,1
+Q4034779,Back to the Future: Ep 3 - Citizen Brown,0,0,1
+Q4034782,Back to the Future: Ep 4 - Double Visions,0,0,1
+Q4034783,Back to the Future: Ep 5 - OUTATIME,0,0,1
 Q64441774,Baldur's Gate 3,1,0,0
 Q810662,Bastion,0,0,0
 Q746228,Batman: Arkham Asylum GOTY Edition,0,0,0
 Q288811,Batman: Arkham City GOTY,0,0,0
-Q20189954,Battleborn,0,0,0
+Q20189954,Battleborn,0,0,1
 Q2892925,Beat Hazard,0,0,0
 Q71732131,Beatbuddy: Tale of the Guardians,0,0,0
-Q124063501,Big Thinkers 1st Grade,0,0,0
-Q73917012,Big Thinkers Kindergarten,0,0,0
+Q124063501,Big Thinkers 1st Grade,0,0,1
+Q73917012,Big Thinkers Kindergarten,0,0,1
 Q2074746,BioShock Infinite,0,0,0
 Q2904848,BIT.TRIP BEAT,0,0,0
 Q4918670,BIT.TRIP Presents... Runner2: Future Legend of Rhythm Alien,0,0,0
@@ -56,11 +56,11 @@ Q68198904,Breathedge,0,0,0
 Q4973485,Broken Sword 1 - Shadow of the Templars: Director's Cut (2009),0,0,0
 Q74250080,Burly Men at Sea,0,0,0
 Q17157041,Captain Toad: Treasure Tracker,1,0,0
-Q110682579,Carcassonne: The Official Board Game,0,0,0
+Q110682579,Carcassonne: The Official Board Game,0,0,1
 Q1051853,Cave Story+,0,0,0
 Q507828,Chrono Trigger,0,0,0
-Q3205367,Cities in Motion 2,0,0,0
-Q119952213,Cities XL Platinum,0,0,0
+Q3205367,Cities in Motion 2,0,0,1
+Q119952213,Cities XL Platinum,0,0,1
 Q2981867,Cogs,0,0,0
 Q500851,Company of Heroes ,0,0,0
 Q500851,Company of Heroes - Legacy Edition,0,0,0
@@ -72,9 +72,9 @@ Q16259371,Crypt of the NecroDancer,0,0,0
 Q671152,Crysis 2 Maximum Edition,0,1,0
 Q22662941,Cthulhu Saves the World ,0,0,0
 Q42324197,Curious Expedition,0,0,0
-Q112324775,D&D Lords of Waterdeep,0,0,0
-Q20112508,DARK SOULS™ III,0,0,0
-Q1166232,DARK SOULS™: Prepare To Die Edition,0,0,0
+Q112324775,D&D Lords of Waterdeep,0,0,1
+Q20112508,DARK SOULS™ III,0,0,1
+Q1166232,DARK SOULS™: Prepare To Die Edition,0,0,1
 Q16259390,Darkest Dungeon®,0,0,0
 Q1166313,Darksiders,0,0,0
 Q77099251,Darksiders Warmastered Edition,0,0,0
@@ -82,7 +82,7 @@ Q210552,Darwinia,0,0,0
 Q729074,Dead Space (2008),0,1,0
 Q842431,Dead Space 2,0,1,0
 Q978362,DEFCON,0,0,0
-Q122705280,DEFCON Beta Demo,0,0,0
+Q122705280,DEFCON Beta Demo,0,0,1
 Q644793,Deus Ex: Game of the Year Edition,0,1,0
 Q642107,Deus Ex: Human Revolution,0,1,0
 Q19772510,Deus Ex: Mankind Divided™,0,0,0
@@ -96,7 +96,7 @@ Q92204031,Divinity: Original Sin Enhanced Edition,0,1,0
 Q3208174,Don't Starve,1,0,0
 Q4037583,Dragon Age™ Inquisition,0,1,0
 Q844183,Dreamfall Chapters,0,0,0
-Q962129,Duke Nukem Forever,0,0,0
+Q962129,Duke Nukem Forever,0,0,1
 Q766077,Dungeon Defenders,0,0,0
 Q114945494,Dungeon Defenders: Awakened,0,0,0
 Q18642577,Dungeon of the ENDLESS™,0,0,0
@@ -121,7 +121,7 @@ Q2569879,F.E.A.R.: Perseus Mandate,0,1,0
 Q16972008,Factorio,0,0,0
 Q10493813,Fallout 4,0,1,0
 Q753749,Fallout: New Vegas,0,1,0
-Q5437996,Fatty Bear's Birthday Surprise,0,0,0
+Q5437996,Fatty Bear's Birthday Surprise,0,0,1
 Q2581523,FEZ,1,0,0
 Q3071522,Fieldrunners,0,0,0
 Q3072790,Fire Emblem Awakening,0,0,0
@@ -133,14 +133,14 @@ Q130720338,Fire Emblem Fates: Special Edition,0,0,0
 Q105582867,Firmament,1,0,0
 Q114924453,Flat Heroes,0,0,0
 Q31627063,For The King,0,0,0
-Q16266633,FORCED,0,0,0
-Q19658430,Freddi Fish 2: The Case of the Haunted Schoolhouse,0,0,0
-Q19658431,Freddi Fish 3: The Case of the Stolen Conch Shell,0,0,0
-Q19752955,Freddi Fish 4: The Case of the Hogfish Rustlers of Briny Gulch,0,0,0
-Q19865961,Freddi Fish 5: The Case of the Creature of Coral Cove,0,0,0
-Q62725218,Freddi Fish and Luther's Maze Madness,0,0,0
-Q62725237,Freddi Fish and Luther's Water Worries,0,0,0
-Q18150456,Freddi Fish and the Case of the Missing Kelp Seeds,0,0,0
+Q16266633,FORCED,0,0,1
+Q19658430,Freddi Fish 2: The Case of the Haunted Schoolhouse,0,0,1
+Q19658431,Freddi Fish 3: The Case of the Stolen Conch Shell,0,0,1
+Q19752955,Freddi Fish 4: The Case of the Hogfish Rustlers of Briny Gulch,0,0,1
+Q19865961,Freddi Fish 5: The Case of the Creature of Coral Cove,0,0,1
+Q62725218,Freddi Fish and Luther's Maze Madness,0,0,1
+Q62725237,Freddi Fish and Luther's Water Worries,0,0,1
+Q18150456,Freddi Fish and the Case of the Missing Kelp Seeds,0,0,1
 Q2388343,Freedom Force,0,0,0
 Q2440,Freedom Force vs. the 3rd Reich,0,0,0
 Q4039041,Frozen Synapse,0,0,0
@@ -148,34 +148,34 @@ Q4308783,FTL: Faster Than Light,0,0,0
 Q56648216,Full Throttle Remastered,0,0,0
 Q400488,Game of Thrones ,0,0,0
 Q18150581,Game of Thrones - A Telltale Games Series,0,0,0
-Q837923,Garry's Mod,0,0,0
+Q837923,Garry's Mod,0,0,1
 Q3762768,Giana Sisters: Twisted Dreams,0,0,0
 Q2659257,Global Agenda,0,0,0
-Q108671491,Gloomhaven,0,0,0
-Q3115716,Gratuitous Space Battles,0,0,0
+Q108671491,Gloomhaven,0,0,1
+Q3115716,Gratuitous Space Battles,0,0,1
 Q56278431,Graveyard Keeper,0,0,0
 Q2796462,Greed Corp,0,0,0
 Q18781688,Grey Goo,0,0,0
 Q5609186,Grim Dawn,1,0,0
-Q15725934,Guacamelee! Gold Edition,0,0,0
-Q15725934,Guacamelee! Super Turbo Championship Edition,0,0,0
-Q3467448,Guardians of Middle-earth,0,0,0
+Q15725934,Guacamelee! Gold Edition,0,0,1
+Q15725934,Guacamelee! Super Turbo Championship Edition,0,0,1
+Q3467448,Guardians of Middle-earth,0,0,1
 Q15729139,Gunpoint,0,0,0
 Q279744,Half-Life,0,1,0
 Q193581,Half-Life 2,0,1,0
-Q1325680,Half-Life 2: Deathmatch,0,0,0
-Q55354219,Half-Life Deathmatch: Source,0,0,0
+Q1325680,Half-Life 2: Deathmatch,0,0,1
+Q55354219,Half-Life Deathmatch: Source,0,0,1
 Q4040378,Hammerfight,0,0,0
 Q98646477,Hardspace: Shipbreaker,1,0,0
 Q31634732,Hero Siege,0,0,0
 Q61479296,Heroes of Hammerwatch,0,0,0
-Q122387140,hexceed,0,0,0
-Q112566540,High On Life,0,0,0
+Q122387140,hexceed,0,0,1
+Q112566540,High On Life,0,0,1
 Q116680138,HITMAN World of Assassination,1,0,0
 Q5874537,HOARD,0,0,0
 Q123669866,Holy Potatoes! A Weapon Shop?!,0,0,0
 Q20155528,Horizon Zero Dawn™ Complete Edition,1,0,0
-Q16267674,Hotline Miami 2: Wrong Number,0,0,0
+Q16267674,Hotline Miami 2: Wrong Number,0,0,1
 Q21427534,Human Resource Machine,0,0,0
 Q106336034,Husk,0,0,0
 Q16457556,Hyper Light Drifter,0,0,0
@@ -186,11 +186,11 @@ Q3808649,Joe Danger 2: The Movie,0,0,0
 Q62393383,Journey To The Savage Planet,0,0,0
 Q2368168,Jurassic Park: The Game,0,0,0
 Q1114167,Just Cause 2,0,0,0
-Q19879485,Keep Talking and Nobody Explodes,0,0,0
+Q19879485,Keep Talking and Nobody Explodes,0,0,1
 Q1471545,Kerbal Space Program,0,0,0
 Q21450467,Kingdom: Classic,0,0,0
 Q64210887,Kingdom: New Lands,0,0,0
-Q940775,Kingdoms of Amalur: Reckoning™,0,0,0
+Q940775,Kingdoms of Amalur: Reckoning™,0,0,1
 Q125537017,Kingdoms of Amalur: Re-Reckoning,1,0,0
 Q1132456,Kirby Super Star Ultra,0,0,0
 Q22905714,Layers of Fear (2016),0,0,0
@@ -213,19 +213,19 @@ Q64521118,LEGO® Star Wars™: The Skywalker Saga,0,0,0
 Q393059,LEGO® The Hobbit™,0,0,0
 Q51089453,LEGO® The Incredibles,0,0,0
 Q2082291,LEGO® The Lord of the Rings™,0,0,0
-Q124067475,Let's Explore The Airport (Junior Field Trips),0,0,0
-Q135078147,Let's Explore The Farm (Junior Field Trips),0,0,0
-Q135078156,Let's Explore The Jungle (Junior Field Trips),0,0,0
+Q124067475,Let's Explore The Airport (Junior Field Trips),0,0,1
+Q135078147,Let's Explore The Farm (Junior Field Trips),0,0,1
+Q135078156,Let's Explore The Jungle (Junior Field Trips),0,0,1
 Q46604354,Life Goes On,0,0,0
 Q1339030,LIMBO,0,0,0
 Q2617696,Lone Survivor: The Director's Cut,0,0,0
 Q59154,Mafia II (Classic),0,0,0
 Q99590361,Mafia II: Definitive Edition,0,0,0
-Q6730529,Magic: The Gathering — Duels of the Planeswalkers 2012,0,0,0
+Q6730529,Magic: The Gathering — Duels of the Planeswalkers 2012,0,0,1
 Q1416194,Magicka,0,1,0
 Q17183734,Magicka 2,0,1,0
 -1,Magicka 2: Spell Balance Beta,0,0,1
-Q13427106,Mario Kart 8,0,0,0
+Q13427106,Mario Kart 8,0,0,1
 Q3294300,Mark of the Ninja,0,1,0
 Q3294300,Mark of the Ninja: Remastered,0,1,0
 Q275960,Mass Effect (2007),0,1,0
@@ -249,15 +249,15 @@ Q20856979,Monster Hunter Generations,1,0,0
 Q30302563,Monster Hunter Generations Ultimate,1,0,0
 Q26157961,Monster Hunter Stories,1,0,0
 Q99448884,Monster Hunter Stories 2: Wings of Ruin,1,0,0
-Q30252256,Monster Hunter: World,0,0,0
+Q30252256,Monster Hunter: World,0,0,1
 Q124068110,Morphblade,0,0,0
 Q4044539,Mortal Kombat Kollection,0,0,0
 Q2656289,Multiwinia,0,0,0
-Q55078485,My Friend Pedro,0,0,0
+Q55078485,My Friend Pedro,0,0,1
 Q114772211,Mysterium,0,0,0
 Q116678099,Naev,0,0,0
 Q2575966,Natural Selection 2,0,0,0
-Q20049240,NBA 2K16,0,0,0
+Q20049240,NBA 2K16,0,0,1
 Q301555,New Super Mario Bros.,0,0,0
 Q558621,New Super Mario Bros. 2,0,0,0
 Q1506526,New Super Mario Bros. U,0,0,0
@@ -267,9 +267,9 @@ Q16267762,Obduction,1,0,0
 Q16259000,Oceanhorn: Monster of Uncharted Seas,0,0,0
 Q23253765,Offworld Trading Company,0,0,0
 Q21000861,Okhlos: Omega,0,0,0
-Q31728109,"On the Rain-Slick Precipice of Darkness, Episode One",0,0,0
-Q31728164,"On the Rain-Slick Precipice of Darkness, Episode Two",0,0,0
-Q18754076,ONE PIECE PIRATE WARRIORS 3,0,0,0
+Q31728109,"On the Rain-Slick Precipice of Darkness, Episode One",0,0,1
+Q31728164,"On the Rain-Slick Precipice of Darkness, Episode Two",0,0,1
+Q18754076,ONE PIECE PIRATE WARRIORS 3,0,0,1
 Q1067214,Orcs Must Die!,0,1,0
 Q765239,Orcs Must Die! 2,0,1,0
 Q7755333,Organ Trail: Director's Cut,0,0,0
@@ -277,19 +277,19 @@ Q17513672,Ori and the Blind Forest,0,0,1
 Q92203646,Ori and the Blind Forest: Definitive Edition,1,0,0
 Q1495152,Osmos,0,0,0
 Q1187668,Overlord,0,0,0
-Q3470532,Pajama Sam 2: Thunder And Lightning Aren't So Frightening,0,0,0
-Q3411219,Pajama Sam 3: You Are What You Eat From Your Head To Your Feet,0,0,0
-Q16259023,Pajama Sam 4: Life Is Rough When You Lose Your Stuff!,0,0,0
-Q7125284,Pajama Sam in No Need to Hide When It's Dark Outside,0,0,0
-Q124070328,Pajama Sam: Games to Play on Any Day,0,0,0
-Q63170775,Pajama Sam's Lost & Found,0,0,0
-Q124070327,Pajama Sam's Sock Works,0,0,0
+Q3470532,Pajama Sam 2: Thunder And Lightning Aren't So Frightening,0,0,1
+Q3411219,Pajama Sam 3: You Are What You Eat From Your Head To Your Feet,0,0,1
+Q16259023,Pajama Sam 4: Life Is Rough When You Lose Your Stuff!,0,0,1
+Q7125284,Pajama Sam in No Need to Hide When It's Dark Outside,0,0,1
+Q124070328,Pajama Sam: Games to Play on Any Day,0,0,1
+Q63170775,Pajama Sam's Lost & Found,0,0,1
+Q124070327,Pajama Sam's Sock Works,0,0,1
 Q3894893,Papo & Yo,0,0,0
-Q3790509,Path of Exile,0,0,0
-Q112169533,Pathfinder Adventures,0,0,0
+Q3790509,Path of Exile,0,0,1
+Q112169533,Pathfinder Adventures,0,0,1
 Q39059386,Pathfinder: Kingmaker,0,0,0
 Q7156711,PAYDAY 2,0,0,0
-Q133729094,Penny Arcade's On the Rain-Slick Precipice of Darkness 3,0,0,0
+Q133729094,Penny Arcade's On the Rain-Slick Precipice of Darkness 3,0,0,1
 Q2617930,Pillars of Eternity,0,0,0
 Q50276798,Pokémon Alpha Sapphire,0,0,0
 Q2045645,Pokémon Emerald,0,0,0
@@ -298,8 +298,8 @@ Q46373684,Pokémon Ultra Moon,0,0,0
 Q46049528,Pokémon Ultra Sun,0,0,0
 Q50276547,Pokémon X,0,0,0
 Q50276557,Pokémon Y,0,0,0
-Q13583301,Poker Night 2,0,0,0
-Q1963135,Poker Night at the Inventory (2010 Original Version),0,0,0
+Q13583301,Poker Night 2,0,0,1
+Q1963135,Poker Night at the Inventory (2010 Original Version),0,0,1
 Q55099390,Poly Bridge,0,0,0
 Q274897,Portal,0,1,0
 Q279446,Portal 2,0,1,0
@@ -310,63 +310,63 @@ Q7245729,Prison Architect,0,0,0
 Q26791591,Project Highrise,0,0,0
 Q473852,Prototype,0,0,0
 Q1277009,Psychonauts,0,0,0
-Q135453323,Putt-Putt and Fatty Bear's Activity Pack,0,0,0
-Q28126594,Putt-Putt and Pep's Balloon-o-Rama,0,0,0
-Q62726003,Putt-Putt and Pep's Dog on a Stick,0,0,0
-Q28126593,Putt-Putt Enters the Race,0,0,0
-Q20054565,Putt-Putt Goes to the Moon,0,0,0
-Q42851282,Putt-Putt Joins the Circus,0,0,0
-Q20054566,Putt-Putt Joins the Parade,0,0,0
-Q22908027,Putt-Putt Saves The Zoo,0,0,0
-Q28126683,Putt-Putt Travels Through Time,0,0,0
-Q62726159,Putt-Putt: Pep's Birthday Surprise,0,0,0
+Q135453323,Putt-Putt and Fatty Bear's Activity Pack,0,0,1
+Q28126594,Putt-Putt and Pep's Balloon-o-Rama,0,0,1
+Q62726003,Putt-Putt and Pep's Dog on a Stick,0,0,1
+Q28126593,Putt-Putt Enters the Race,0,0,1
+Q20054565,Putt-Putt Goes to the Moon,0,0,1
+Q42851282,Putt-Putt Joins the Circus,0,0,1
+Q20054566,Putt-Putt Joins the Parade,0,0,1
+Q22908027,Putt-Putt Saves The Zoo,0,0,1
+Q28126683,Putt-Putt Travels Through Time,0,0,1
+Q62726159,Putt-Putt: Pep's Birthday Surprise,0,0,1
 Q2127932,Puzzle Agent,0,0,0
 Q6093497,Puzzle Agent 2,0,0,0
 Q16267828,Race The Sun,0,0,0
-Q2631793,Railroad Tycoon 3,0,0,0
-Q22262157,RAW - Realms of Ancient War,0,0,0
-Q2560167,Red Faction: Armageddon,0,0,0
+Q2631793,Railroad Tycoon 3,0,0,1
+Q22262157,RAW - Realms of Ancient War,0,0,1
+Q2560167,Red Faction: Armageddon,0,0,1
 Q16672675,Reus,0,0,0
 Q16742875,RiME,1,0,0
 Q1513013,Risen,0,0,0
 Q20031742,RIVE,0,0,0
-Q20031743,Rocket League,0,0,0
+Q20031743,Rocket League,0,0,1
 Q13752449,Rogue Legacy,0,0,0
-Q4048638,Ryse: Son of Rome,0,0,0
-Q1801455,Saints Row: The Third,0,0,0
-Q66823427,Sam & Max 301: The Penal Zone,0,0,0
-Q107424266,Sam & Max 302: The Tomb of Sammun-Mak,0,0,0
-Q107424267,Sam & Max 303: They Stole Max's Brain!,0,0,0
-Q107424269,Sam & Max 304: Beyond the Alley of the Dolls,0,0,0
-Q107424270,Sam & Max 305: The City that Dares not Sleep,0,0,0
+Q4048638,Ryse: Son of Rome,0,0,1
+Q1801455,Saints Row: The Third,0,0,1
+Q66823427,Sam & Max 301: The Penal Zone,0,0,1
+Q107424266,Sam & Max 302: The Tomb of Sammun-Mak,0,0,1
+Q107424267,Sam & Max 303: They Stole Max's Brain!,0,0,1
+Q107424269,Sam & Max 304: Beyond the Alley of the Dolls,0,0,1
+Q107424270,Sam & Max 305: The City that Dares not Sleep,0,0,1
 Q2617354,Sanctum,0,1,0
 Q3644856,Sanctum 2,0,1,0
 Q1573097,Scribblenauts Unlimited,0,0,0
-Q106564028,Scythe: Digital Edition,0,0,0
-Q18356951,Sentinels of the Multiverse,0,0,0
-Q2636097,Serious Sam 3: BFE,0,0,0
-Q60559650,Serious Sam Fusion 2017 (beta),0,0,0
+Q106564028,Scythe: Digital Edition,0,0,1
+Q18356951,Sentinels of the Multiverse,0,0,1
+Q2636097,Serious Sam 3: BFE,0,0,1
+Q60559650,Serious Sam Fusion 2017 (beta),0,0,1
 Q846051,Shadow of the Colossus,0,0,0
-Q7460766,Shadowrun Chronicles - Boston Lockdown,0,0,0
-Q7460767,Shadowrun Returns,0,0,0
-Q113680190,Shadowrun: Dragonfall - Director's Cut,0,0,0
-Q18928722,Shadowrun: Hong Kong - Extended Edition,0,0,0
+Q7460766,Shadowrun Chronicles - Boston Lockdown,0,0,1
+Q7460767,Shadowrun Returns,0,0,1
+Q113680190,Shadowrun: Dragonfall - Director's Cut,0,0,1
+Q18928722,Shadowrun: Hong Kong - Extended Edition,0,0,1
 Q4049368,Shank,0,0,0
 Q27890357,SHENZHEN I/O,0,0,0
-Q2385,Sid Meier's Civilization V,0,0,0
-Q24050047,Sid Meier's Civilization VI,0,0,0
+Q2385,Sid Meier's Civilization V,0,0,1
+Q24050047,Sid Meier's Civilization VI,0,0,1
 Q55536877,Slime-san,0,0,0
 Q16266664,Solar 2,0,0,0
 Q116774681,Space Run Galaxy,0,0,0
 Q3492558,SpaceChem,0,0,0
-Q962443,Spec Ops: The Line,0,0,0
+Q962443,Spec Ops: The Line,0,0,1
 Q22262072,Spirits,0,0,0
 Q16267641,Splice,0,0,0
-Q3494294,SPY Fox 2: Some Assembly Required,0,0,0
-Q3494295,SPY Fox 3: Operation Ozone,0,0,0
-Q63228470,SPY Fox in: Cheese Chase,0,0,0
-Q3161366,SPY Fox in: Dry Cereal,0,0,0
-Q63228471,SPY Fox in: Hold the Mustard,0,0,0
+Q3494294,SPY Fox 2: Some Assembly Required,0,0,1
+Q3494295,SPY Fox 3: Operation Ozone,0,0,1
+Q63228470,SPY Fox in: Cheese Chase,0,0,1
+Q3161366,SPY Fox in: Dry Cereal,0,0,1
+Q63228471,SPY Fox in: Hold the Mustard,0,0,1
 Q55217,Star Wars Episode I: Racer,0,0,0
 Q54297,Star Wars: Rogue Squadron,0,0,0
 Q55298,STAR WARS™ Jedi Knight II: Jedi Outcast™,0,0,0
@@ -380,35 +380,35 @@ Q30643248,StarCrawlers,0,0,0
 Q23013817,Stardew Valley,1,0,0
 Q71728562,Starseed Pilgrim,0,0,0
 Q22019745,SteamWorld Heist,0,0,0
-Q17154142,Stomping Land,0,0,0
-Q7623793,Strike Suit Zero,0,0,0
+Q17154142,Stomping Land,0,0,1
+Q7623793,Strike Suit Zero,0,0,1
 Q7623793,Strike Suit Zero: Director's Cut,0,0,0
-Q135448928,Strong Bad Episode 1: Homestar Ruiner,0,0,0
-Q135448929,Strong Bad Episode 2: Strong Badia the Free,0,0,0
-Q135448930,Strong Bad Episode 3: Baddest of the Bands,0,0,0
-Q135448931,Strong Bad Episode 4: Dangeresque 3,0,0,0
-Q135448932,Strong Bad Episode 5: 8-Bit Is Enough,0,0,0
+Q135448928,Strong Bad Episode 1: Homestar Ruiner,0,0,1
+Q135448929,Strong Bad Episode 2: Strong Badia the Free,0,0,1
+Q135448930,Strong Bad Episode 3: Baddest of the Bands,0,0,1
+Q135448931,Strong Bad Episode 4: Dangeresque 3,0,0,1
+Q135448932,Strong Bad Episode 5: 8-Bit Is Enough,0,0,1
 Q19745067,Sunless Sea,1,0,0
 Q29564250,Sunless Skies,1,0,0
-Q116302566,Super Dungeon Tactics,0,0,0
+Q116302566,Super Dungeon Tactics,0,0,1
 Q218568,Super Hexagon,0,0,0
 Q1050298,Super Mario 3D Land,0,0,0
-Q216995,Super Mario 64,0,0,0
+Q216995,Super Mario 64,0,0,1
 Q170489,Super Mario Galaxy,1,0,0
 Q854487,Super Mario Galaxy 2,1,0,0
 Q639955,Super Mario Sunshine,0,0,0
-Q1784048,Super Meat Boy,0,0,0
+Q1784048,Super Meat Boy,0,0,1
 Q2071060,Superbrothers: Sword & Sworcery EP,0,0,0
-Q12496422,Surgeon Simulator,0,0,0
+Q12496422,Surgeon Simulator,0,0,1
 Q30639185,Surviving Mars,0,0,0
-Q20538677,Sword Coast Legends,0,0,0
+Q20538677,Sword Coast Legends,0,0,1
 Q104640897,SYNTHETIK,0,0,0
-Q20652409,Tabletop Simulator,0,0,0
+Q20652409,Tabletop Simulator,0,0,1
 Q107038226,Tainted Grail,0,0,0
 Q122825758,Tainted Grail: The Fall of Avalon,1,0,0
 Q16962493,Tales from the Borderlands,0,0,0
-Q81633916,Talisman: Digital Classic Edition,0,0,0
-Q382108,Team Fortress 2,0,0,0
+Q81633916,Talisman: Digital Classic Edition,0,0,1
+Q382108,Team Fortress 2,0,0,1
 Q332697,Terraria,0,0,0
 Q3932528,The Banner Saga,0,0,0
 Q23647157,The Banner Saga 2,0,0,0
@@ -427,12 +427,12 @@ Q642526,The Legend of Zelda: Ocarina of Time 3D,1,0,0
 Q861205,The Legend of Zelda: Skyward Sword,0,0,0
 Q14900378,The Legend of Zelda: The Wind Waker HD,1,0,0
 Q23008476,The Legend of Zelda: Twilight Princess HD,1,0,0
-Q15904573,The LEGO® Movie - Videogame,0,0,0
-Q60220853,The LEGO® Movie 2 - Videogame,0,0,0
-Q41573632,The LEGO® NINJAGO® Movie Video Game,0,0,0
+Q15904573,The LEGO® Movie - Videogame,0,0,1
+Q60220853,The LEGO® Movie 2 - Videogame,0,0,1
+Q41573632,The LEGO® NINJAGO® Movie Video Game,0,0,1
 Q18085691,The Long Dark,0,0,0
-Q1440462,The Lord of the Rings: War in the North,0,0,0
-Q59535090,The Outer Worlds,0,0,0
+Q1440462,The Lord of the Rings: War in the North,0,0,1
+Q59535090,The Outer Worlds,0,0,1
 Q117316999,The Outer Worlds: Spacer's Choice Edition,0,0,0
 Q286737,The Path,0,0,0
 Q13427428,The Swapper,0,0,0
@@ -444,11 +444,11 @@ Q917272,The Witcher 2: Assassins of Kings Enhanced Edition,0,0,0
 Q4267401,The Witcher 3: Wild Hunt,1,0,0
 Q1711359,The Witness,1,0,0
 Q5427938,The Wolf Among Us,0,0,0
-Q29964519,theHunter: Call of the Wild™,0,0,0
+Q29964519,theHunter: Call of the Wild™,0,0,1
 Q4051399,Thief,0,0,0
 Q795360,Thief: Deadly Shadows,0,0,0
-Q16743212,This War of Mine,0,0,0
-Q7800668,Ticket to Ride,0,0,0
+Q16743212,This War of Mine,0,0,1
+Q7800668,Ticket to Ride,0,0,1
 Q20538681,TIS-100,0,0,0
 Q324871,Titan Quest,0,0,0
 Q118905576,Titan Quest Anniversary Edition,0,0,0
@@ -466,16 +466,16 @@ Q226805,Torchlight II,0,1,0
 Q6568802,Torment: Tides of Numenera,0,0,0
 Q20712541,Total War: WARHAMMER,0,0,0
 Q105427208,Total War: WARHAMMER III,0,0,0
-Q55381983,Totally Accurate Battle Simulator,0,0,0
+Q55381983,Totally Accurate Battle Simulator,0,0,1
 Q13417084,Transistor,0,0,0
 Q119952215,TransOcean: The Shipping Company,0,0,0
-Q2632229,Trine 2,0,0,0
-Q62393510,Trover Saves the Universe,0,0,0
+Q2632229,Trine 2,0,0,1
+Q62393510,Trover Saves the Universe,0,0,1
 Q64958460,Tumblestone,0,0,0
 Q18758128,Underrail,0,0,0
 Q1703254,Uplink,0,0,0
 Q1755927,Vampire: The Masquerade - Bloodlines,0,0,0
-Q66316850,Vertiginous Golf,0,0,0
+Q66316850,Vertiginous Golf,0,0,1
 Q5766,VVVVVV,0,0,0
 Q2085997,Wargame: European Escalation,0,0,0
 Q1061708,"Warhammer 40,000: Dawn of War - Anniversary Edition ",0,1,0
@@ -486,12 +486,12 @@ Q926355,"Warhammer 40,000: Dawn of War II - Anniversary Edition",0,0,0
 Q1051585,"Warhammer 40,000: Dawn of War II - Chaos Rising",0,0,0
 Q1086249,"Warhammer 40,000: Dawn of War II - Retribution",0,0,0
 Q107999441,Warmachine Tactics,0,0,0
-Q737653,Wasteland 1 - The Original Classic,0,0,0
-Q1633410,Wasteland 2,0,0,0
-Q1633410,Wasteland 2: Director's Cut,0,0,0
-Q27943180,Wasteland 3,0,0,0
+Q737653,Wasteland 1 - The Original Classic,0,0,1
+Q1633410,Wasteland 2,0,0,1
+Q1633410,Wasteland 2: Director's Cut,0,0,1
+Q27943180,Wasteland 3,0,0,1
 Q110668476,while True: learn(),0,0,0
-Q13501195,WildStar,0,0,0
+Q13501195,WildStar,0,0,1
 Q89409387,Windward,0,0,0
 Q637312,World of Goo,0,0,0
 Q3570057,Worms Reloaded,0,0,0
